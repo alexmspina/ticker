@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  server:
+    build: ../..
+    image: ticker-server:0.1.0-linux-arm64
+    networks:
+      - default
+    ports:
+      - "127.0.0.1:8000:80"
+    environment:
+      - TICKER_CONFIG_FILE=dev_config.toml
+    command: ["gunicorn", "--bind", "0.0.0.0:80", "--timeout", "120", "ticker:create_app()"]
+    
+    

@@ -1,0 +1,12 @@
+.coverage
+htmlcov
+.DS_Store
+*.pem
+*.key
+*.crt
+*.pyc
+.env*
+dev_config.toml
+.tmuxinator.yml
+*egg-info
+.vscode/settings.json

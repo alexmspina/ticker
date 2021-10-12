@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  server:
+    build: ../..
+    image: stockpulp.azurecr.io/ticker-server:0.1.0-linux-amd64
+    networks:
+      - default
+    ports:
+      - "127.0.0.1:80:80"
+    environment:
+      - TICKER_CONFIG_FILE=dev_config.toml
+    command: ["gunicorn", "--bind", "0.0.0.0:80", "--timeout", "120", "--workers", "4", "ticker:create_app()"]
